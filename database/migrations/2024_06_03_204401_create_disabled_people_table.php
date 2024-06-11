@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('disabled_people', function (Blueprint $table) {
             $table->id();
-            $table->integer('person_id');
+            $table->unsignedBigInteger('person_id');
             $table->foreign('person_id')->references('id')->on('people');
             $table->integer('disabled_id');
             $table->integer('disabled_level_id');

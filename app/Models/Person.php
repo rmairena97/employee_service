@@ -23,7 +23,7 @@ class Person extends Model
         'igss',
         'birth_date',
         'children_count',
-        'marital_state',
+        'marital_state_id',
         'gender_id',
         'linguistic_community_id',
         'ethnicity_id'

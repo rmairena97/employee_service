@@ -17,12 +17,15 @@ class PersonController extends Controller
     public function __construct(IPersonRepository $repo){
         $this->person_repo = $repo;
     }
-    public function getPersonById(GetPersonRequest $request) : JsonResponse{
-        $result = $this->person_repo->getByIdentification($request->get('document_type'), $request->get('identification'));
-        return response()->json(new PersonResource($result));
+    public function getPersonById(GetPersonRequest $request) : JsonResponse {
+        $result = $this->person_repo->getByIdentification($request->get('identification'), $request->get('document_type'));
+        if( !$result ){
+            return $this->responseError('Person not found', 404);
+        }
+        return $this->responseWithData(new PersonResource($result));
     }
 
-    public function store(PersonRequest $request) : JsonResponse{
+    public function store(PersonRequest $request) : JsonResponse {
         $result = $this->person_repo->create($request->validated());
         return response()->json(new PersonResource($result));
     }

@@ -11,7 +11,7 @@ class PersonRepository extends BaseRepository implements  IPersonRepository {
     public function __construct() {
         parent::__construct(new Person());
     }
-    public function getByIdentification(string $identification, string $documentType): Model
+    public function getByIdentification(string $identification, string $documentType): ?Model
     {
         // TODO: Implement getByIdentification() method.
         return $this->getModel()->where($documentType, $identification)->first();

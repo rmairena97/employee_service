@@ -35,7 +35,7 @@ class PersonRequest extends FormRequest
             'igss' => 'sometimes|string',
             'birth_date' => 'required| date_format:m/d/Y',
             'children_count' => 'required',
-            'marital_state' => 'required',
+            'marital_state_id' => 'required',
             'gender_id' => 'required',
             'linguistic_community_id' => 'required',
             'ethnicity_id' => 'required'

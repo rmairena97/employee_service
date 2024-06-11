@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('igss', 50)->nullable();
             $table->date('birth_date')->nullable();
             $table->integer('children_count')->nullable();
-            $table->integer('marital_state');
+            $table->integer('marital_state_id');
             $table->integer('gender_id');
             $table->integer('linguistic_community_id');
             $table->integer('ethnicity_id');
