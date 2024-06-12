@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Contracts\Person\IPersonRepository;
 use App\Models\Person;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 class PersonRepository extends BaseRepository implements  IPersonRepository {
@@ -22,5 +23,16 @@ class PersonRepository extends BaseRepository implements  IPersonRepository {
     {
         // TODO: Implement createPerson() method.
         return $this->create($data);
+    }
+
+    public function getFilter(array $data): Collection
+    {
+        // TODO: Implement getFilter() method.
+        $query_model = $this->getModel()->query();
+
+        foreach($data as $key => $value) {
+            $query_model = $query_model->where($key, $value);
+        }
+        return $query_model->get();
     }
 }

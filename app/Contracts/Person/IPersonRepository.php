@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Contracts\Person;
-interface IPersonRepository extends  IQueryPerson, IUpserPerson {
+use Illuminate\Database\Eloquent\Collection;
 
+interface IPersonRepository extends  IQueryPerson, IUpserPerson {
+    public function getFilter(array $data) : Collection;
 }

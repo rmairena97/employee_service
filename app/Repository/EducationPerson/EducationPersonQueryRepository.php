@@ -18,7 +18,7 @@ class EducationPersonQueryRepository extends BaseRepository implements IEducatio
         // TODO: Implement getEducationPersonByParams() method.
         $base_query = $this->getModel()->query();
         foreach($data as $key => $param){
-            $base_query->where($key, '=', $param);
+            $base_query = $base_query->where($key, '=', $param);
         }
         return $base_query->get();
     }

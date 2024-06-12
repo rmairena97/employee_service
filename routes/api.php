@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(PersonController::class)->group(function () {
     Route::post('/person/getPersonById', 'getPersonById');
     Route::post('/person/store', 'store');
+    Route::post('person/search', 'search');
 });
 
 Route::controller(DisabledPersonController::class)->group(function () {
