@@ -155,4 +155,45 @@ class PersonController extends Controller
         $result = $this->person_repo->getFilter($request->validated());
         return $this->responseWithData(PersonResource::collection($result));
     }
+    /**
+     * @OA\Put (
+     *     path="/api/person/update",
+     *     operationId="updateByParams",
+     *     tags={"Person"},
+     *     summary="Update a person",
+     *     description="Update a resource",
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(),
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 type="object",
+     *                  required={"id"},
+     *                 @OA\Property(property="id",type="number"),
+     *                 @OA\Property(property="f_name",type="text"),
+     *                 @OA\Property(property="s_name",type="text"),
+     *                 @OA\Property(property="other_name",type="text"),
+     *                 @OA\Property(property="f_surname",type="text"),
+     *                 @OA\Property(property="l_surname",type="text"),
+     *                 @OA\Property(property="birth_date",type="text"),
+     *             ),
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *          response="200",
+     *          description="Success",
+     *          @OA\JsonContent()
+     *      ),
+     *     @OA\Response(
+     *        response="404",
+     *        description="No data found",
+     *      @OA\JsonContent()
+     *  ),
+     * )
+     */
+
+    public function update(PersonRequest $request) : JsonResponse {
+        $result =   $this->person_repo->updatePerson($request->get('id'), $request->except('id'));
+        return $this->responseWithData($result, 204);
+    }
 }

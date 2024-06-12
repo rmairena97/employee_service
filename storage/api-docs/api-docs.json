@@ -660,6 +660,72 @@
                     }
                 }
             }
+        },
+        "/api/person/update": {
+            "put": {
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Update a person",
+                "description": "Update a resource",
+                "operationId": "updateByParams",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "id"
+                                ],
+                                "properties": {
+                                    "id": {
+                                        "type": "number"
+                                    },
+                                    "f_name": {
+                                        "type": "text"
+                                    },
+                                    "s_name": {
+                                        "type": "text"
+                                    },
+                                    "other_name": {
+                                        "type": "text"
+                                    },
+                                    "f_surname": {
+                                        "type": "text"
+                                    },
+                                    "l_surname": {
+                                        "type": "text"
+                                    },
+                                    "birth_date": {
+                                        "type": "text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

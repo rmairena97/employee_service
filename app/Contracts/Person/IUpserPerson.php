@@ -5,4 +5,5 @@ use Illuminate\Database\Eloquent\Model;
 
 interface IUpserPerson {
     public function createPerson($data) : Model;
+    public function updatePerson($identification, $data) : Model;
 }

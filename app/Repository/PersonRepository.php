@@ -35,4 +35,12 @@ class PersonRepository extends BaseRepository implements  IPersonRepository {
         }
         return $query_model->get();
     }
+
+    public function updatePerson($identification, $data): Model
+    {
+        // TODO: Implement updatePerson() method.
+        $person = $this->findById($identification);
+        $person->update($data);
+        return $person;
+    }
 }
