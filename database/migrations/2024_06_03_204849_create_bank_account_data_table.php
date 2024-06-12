@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('person_id');
             $table->foreign('person_id')->references('id')->on('people');
             $table->string('bank_name');
-            $table->integer('account_number');
+            $table->bigInteger('account_number');
             $table->softDeletes();
             $table->timestamps();
         });

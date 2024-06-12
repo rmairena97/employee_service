@@ -24,7 +24,7 @@ class BankDataRequest extends FormRequest
         return [
             'person_id' => 'required|exists:people,id',
             'bank_name' => 'required|string',
-            'account_number' => 'required|number',
+            'account_number' => 'required|numeric',
         ];
     }
 }
