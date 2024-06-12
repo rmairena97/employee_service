@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('person_id');
             $table->foreign('person_id')->references('id')->on('people');
             $table->integer('academic_level_id');
-            $table->integer('academic_degree_id');
+            $table->integer('academic_degree_id')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

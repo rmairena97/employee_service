@@ -24,16 +24,17 @@ class PersonRequest extends FormRequest
     {
         return [
             //
-            'cui' => 'sometimes|unique:people,cui',
-            'passport' => 'sometimes|unique:people,passport',
-            'nit' => 'sometimes|unique:people,nit',
+            'document' => 'required|in:cui,passport,nit',
+            'cui' => 'required_if:document,cui|unique:people,cui',
+            'passport' => 'required_if:document,passport|unique:people,passport',
+            'nit' => 'required_if:document,nit|unique:people,nit',
             'f_name' => 'required',
             's_name' => 'required',
             'f_surname' => 'required',
             'l_surname' => 'required',
-            'house_surname' => 'sometimes|string',
-            'igss' => 'sometimes|string',
-            'birth_date' => 'required| date_format:m/d/Y',
+            'house_surname' => 'nullable|string',
+            'igss' => 'nullable|string',
+            'birth_date' => 'required|date_format:m/d/Y',
             'children_count' => 'required',
             'marital_state_id' => 'required',
             'gender_id' => 'required',

@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Illuminate\Support\Facades\Response;
 
+/**
+ * @OA\Info(
+ *    title="Person Repository documentation",
+ *    version="1.0.0",
+ * )
+ */
 abstract class Controller
 {
     //
@@ -18,9 +26,26 @@ abstract class Controller
      * @return \Illuminate\Http\JsonResponse
      */
     protected function responseWithData($data, $code = 200) : JsonResponse {
+        $message = $code == 201 ? "Resource created" : "Data found";
+        if ( !$data){
+            $message = "No data found";
+            $code = 404;
+        }
+
+        if ( $data instanceof Collection && !$data->count()  ) {
+            $message = "No data found";
+            $code = 404;
+        }
+
+        if ( $data instanceof ResourceCollection && !$data->count() ){
+            $message = "No data found";
+            $code = 404;
+        }
+
         return Response::json([
-            'status' => true,
-            'data' => $data
+            'status' => $code == 200,
+            'data' => $data,
+            'result' => $message,
         ], $code);
     }
     /**

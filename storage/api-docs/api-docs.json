@@ -1,0 +1,665 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Person Repository documentation",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/setBankDataPerson": {
+            "post": {
+                "tags": [
+                    "BankData"
+                ],
+                "summary": "Store the bank account of a person",
+                "description": "Storing bank account that belongs to a person",
+                "operationId": "StoringBankData",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "person_id",
+                                    "bank_name",
+                                    "account_number"
+                                ],
+                                "properties": {
+                                    "person_id": {
+                                        "type": "number"
+                                    },
+                                    "bank_name": {
+                                        "type": "text"
+                                    },
+                                    "account_number": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/setDisability": {
+            "post": {
+                "tags": [
+                    "PeopleDisability"
+                ],
+                "summary": "Store a new disability",
+                "description": "Storing disablitity that a person have",
+                "operationId": "StoringPeopleDisability",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "person_id",
+                                    "disabled_id",
+                                    "disabled_level_id"
+                                ],
+                                "properties": {
+                                    "person_id": {
+                                        "type": "number"
+                                    },
+                                    "disabled_id": {
+                                        "type": "number"
+                                    },
+                                    "disabled_level_id": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getPersonByDisability/{disability_id}": {
+            "get": {
+                "tags": [
+                    "PeopleDisability"
+                ],
+                "summary": "Retrieving people by disability",
+                "description": "Searching method to get people by their disability",
+                "operationId": "retrievingPeopleByDisability",
+                "parameters": [
+                    {
+                        "name": "disability_id",
+                        "in": "path",
+                        "description": "Id of the disability",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/setPersonByEducation": {
+            "post": {
+                "tags": [
+                    "Education"
+                ],
+                "summary": "Store the education of a person",
+                "description": "Storing education that belongs to a person",
+                "operationId": "StoringEducationPerson",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "person_id",
+                                    "academic_level_id"
+                                ],
+                                "properties": {
+                                    "person_id": {
+                                        "type": "number"
+                                    },
+                                    "academic_level_id": {
+                                        "type": "number"
+                                    },
+                                    "academic_degree_id": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Resource created",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getPersonByEducation": {
+            "post": {
+                "tags": [
+                    "Education"
+                ],
+                "summary": "Retrieving people by education",
+                "description": "Searching method to get people by their education",
+                "operationId": "personEducation",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "academic_level_id"
+                                ],
+                                "properties": {
+                                    "academic_level_id": {
+                                        "type": "number"
+                                    },
+                                    "academic_degree_id": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/setOccupationPerson": {
+            "post": {
+                "tags": [
+                    "Occupation"
+                ],
+                "summary": "Store a new occupation",
+                "description": "Storing occupation that belongs to a person",
+                "operationId": "storingOccupation",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "person_id",
+                                    "occupation_id"
+                                ],
+                                "properties": {
+                                    "person_id": {
+                                        "type": "number"
+                                    },
+                                    "occupation_id": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/getOccupationPerson/{occupation_id}": {
+            "get": {
+                "tags": [
+                    "Occupation"
+                ],
+                "summary": "Retrieving people by occupation",
+                "description": "Searching method to get people by their occupation",
+                "operationId": "personOccupation",
+                "parameters": [
+                    {
+                        "name": "occupation_id",
+                        "in": "path",
+                        "description": "Id of the occupation",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/person/getPersonById": {
+            "post": {
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Search for a person",
+                "description": "You can search for a person depending on their documents, you can specified the document with theses [cui, passport, nit]",
+                "operationId": "SearchingPersonByDocument",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "document_type",
+                                    "identification"
+                                ],
+                                "properties": {
+                                    "document_type": {
+                                        "type": "text"
+                                    },
+                                    "identification": {
+                                        "type": "text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/person/store": {
+            "post": {
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Store a new person",
+                "description": "This action allows you to store a person in the database",
+                "operationId": "StoringPeople",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "document",
+                                    "f_name",
+                                    "s_name",
+                                    "f_surname",
+                                    "l_surname",
+                                    "birth_date",
+                                    "children_count",
+                                    "marital_state_id",
+                                    "gender_id",
+                                    "linguistic_community_id",
+                                    "ethnicity_id"
+                                ],
+                                "properties": {
+                                    "document": {
+                                        "type": "text"
+                                    },
+                                    "cui": {
+                                        "type": "text"
+                                    },
+                                    "passport": {
+                                        "type": "text"
+                                    },
+                                    "nit": {
+                                        "type": "text"
+                                    },
+                                    "f_name": {
+                                        "type": "text"
+                                    },
+                                    "s_name": {
+                                        "type": "text"
+                                    },
+                                    "f_surname": {
+                                        "type": "text"
+                                    },
+                                    "l_surname": {
+                                        "type": "text"
+                                    },
+                                    "house_surname": {
+                                        "type": "text"
+                                    },
+                                    "igss": {
+                                        "type": "text"
+                                    },
+                                    "birth_date": {
+                                        "type": "text"
+                                    },
+                                    "children_count": {
+                                        "type": "number"
+                                    },
+                                    "marital_state_id": {
+                                        "type": "number"
+                                    },
+                                    "gender_id": {
+                                        "type": "number"
+                                    },
+                                    "linguistic_community_id": {
+                                        "type": "number"
+                                    },
+                                    "ethnicity_id": {
+                                        "type": "number"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/person/search": {
+            "post": {
+                "tags": [
+                    "Person"
+                ],
+                "summary": "Search for a person",
+                "description": "Apply the filter with one or many params contains in the person model",
+                "operationId": "FilterByParams",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "properties": {
+                                    "cui": {
+                                        "type": "text"
+                                    },
+                                    "passport": {
+                                        "type": "text"
+                                    },
+                                    "nit": {
+                                        "type": "text"
+                                    },
+                                    "f_name": {
+                                        "type": "text"
+                                    },
+                                    "s_name": {
+                                        "type": "text"
+                                    },
+                                    "other_name": {
+                                        "type": "text"
+                                    },
+                                    "f_surname": {
+                                        "type": "text"
+                                    },
+                                    "l_surname": {
+                                        "type": "text"
+                                    },
+                                    "birth_date": {
+                                        "type": "text"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Data Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No data found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

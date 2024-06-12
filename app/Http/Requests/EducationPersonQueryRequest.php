@@ -23,8 +23,9 @@ class EducationPersonQueryRequest extends FormRequest
     {
         return [
             //
-            'academic_level_id' => 'nullable|required',
-            'academic_degree_id' => 'nullable|required',
+            'academic_level_id' => 'nullable|numeric',
+            'academic_degree_id' => 'nullable|numeric',
         ];
     }
+
 }

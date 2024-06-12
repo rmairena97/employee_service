@@ -20,9 +20,9 @@ Route::controller(\App\Http\Controllers\OccupationPersonController::class)->grou
    Route::get('getOccupationPerson/{occupation_id}', 'getOccupationPerson');
 });
 
-Route::controller(\App\Models\EducationPerson::class)->group(function () {
-    Route::post('setEducationPerson', 'setEducationPerson');
-    Route::get('getEducationPerson/{education_id}', 'getEducationPerson');
+Route::controller(\App\Http\Controllers\EducationPersonController::class)->group(function () {
+    Route::post('setPersonByEducation', 'setEducationPerson');
+    Route::post('getPersonByEducation', 'getEducationPerson');
 });
 
 Route::controller(\App\Http\Controllers\BankDataPersonController::class)->group(function () {

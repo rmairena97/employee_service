@@ -22,9 +22,9 @@ class EducationPersonRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id_person'=> 'required|exists:people,id',
-            'academic_level_id' => 'required',
-            'academic_degree_id' => 'required'
+            'person_id'=> 'required|exists:people,id',
+            'academic_level_id' => 'required|numeric',
+            'academic_degree_id' => 'nullable|numeric'
         ];
     }
 }
