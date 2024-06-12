@@ -662,7 +662,7 @@
             }
         },
         "/api/person/update": {
-            "put": {
+            "post": {
                 "tags": [
                     "Person"
                 ],

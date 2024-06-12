@@ -22,7 +22,6 @@ class PersonUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
             'id' => 'required|exists:people,id',
             'f_name' => 'nullable|string',
             's_name' => 'nullable|string',

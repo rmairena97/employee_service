@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Contracts\Person\IPersonRepository;
 use App\Http\Requests\GetPersonRequest;
 use App\Http\Requests\PersonRequest;
+use App\Http\Requests\PersonUpdateRequest;
 use App\Http\Requests\QueryPersonRequest;
 use App\Http\Resources\PersonResource;
 use Illuminate\Http\JsonResponse;
@@ -156,7 +157,7 @@ class PersonController extends Controller
         return $this->responseWithData(PersonResource::collection($result));
     }
     /**
-     * @OA\Put (
+     * @OA\Post  (
      *     path="/api/person/update",
      *     operationId="updateByParams",
      *     tags={"Person"},
@@ -192,8 +193,8 @@ class PersonController extends Controller
      * )
      */
 
-    public function update(PersonRequest $request) : JsonResponse {
-        $result =   $this->person_repo->updatePerson($request->get('id'), $request->except('id'));
-        return $this->responseWithData($result, 204);
+    public function update(PersonUpdateRequest $request) : JsonResponse {
+        $result =  $this->person_repo->updatePerson($request->get('id'), array_filter( $request->except('id'), fn($item) => !is_null($item)));
+        return $this->responseWithData($result, 200);
     }
 }
